@@ -13,7 +13,8 @@ setup(
     python_requires=">=3.0",
     version=__version__,
     license="MIT",
-    description="Check if given string is a valid PostgreSQL column name",
+    description="Allows you to check if a given "
+    "string can be PostgreSQL column name",
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(
