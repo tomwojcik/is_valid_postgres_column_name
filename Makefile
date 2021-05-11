@@ -7,7 +7,8 @@ gen_files:
 	python gen_keywords_files.py
 
 deps:
-	pip-compile
+	pip-compile --generate-hashes requirements.in
+	pip-compile --generate-hashes requirements.data.in
 
 test:
 	pytest --cov=is_valid_postgres_column_name --cov-report term-missing tests.py --verbose
