@@ -24,7 +24,10 @@ setup(
         )
     ),
     package_data={
-        "is_valid_postgres_column_name": ["py.typed"],
+        "is_valid_postgres_column_name": [
+            "py.typed",
+            "reserved_keywords/*.txt",
+        ],
     },
     platforms="any",
     author=__author__,
