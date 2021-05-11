@@ -23,4 +23,4 @@ SUPPORTED_POSTGRESQL_VERSIONS = [
     13,
 ]
 
-DEFAULT_PATTERN = re.compile(r"^([[:alpha:]_][[:alnum:]_]*)$")
+DEFAULT_PATTERN = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_]*$")

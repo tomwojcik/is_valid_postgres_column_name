@@ -4,7 +4,7 @@ from typing import Pattern, Set
 
 import functools
 
-__all__ = ["is_valid_postgres_column_name", "is_reserved_keyword"]
+__all__ = ["is_valid_postgres_column_name", "is_reserved_postgres_keyword"]
 
 from is_valid_postgres_column_name.constants import (
     DEFAULT_PATTERN,
@@ -21,11 +21,11 @@ def _get_keywords(v: float) -> Set[str]:
     with open(
         os.path.join(this_dir, "reserved_keywords", f"{v}.txt"), "r"
     ) as f:
-        lst = f.readlines()
+        lst = f.read().splitlines()
     return set(lst)
 
 
-def is_reserved_keyword(
+def is_reserved_postgres_keyword(
     s: str, version: float = max(SUPPORTED_POSTGRESQL_VERSIONS)
 ) -> bool:
     keywords = _get_keywords(v=version)
@@ -43,9 +43,9 @@ def is_valid_postgres_column_name(
     version: float = max(SUPPORTED_POSTGRESQL_VERSIONS),
     pattern: Pattern = DEFAULT_PATTERN,
 ) -> bool:
-    if is_reserved_keyword(column_name, version):
+    if is_reserved_postgres_keyword(column_name, version):
         return False
-    elif 0 < len(column_name) < 63:
+    elif not 0 < len(column_name) < 63:
         return False
     elif not pattern_matches(column_name, pattern):
         return False

@@ -1,9 +1,11 @@
 import pytest
 
 from is_valid_postgres_column_name import (
-    SUPPORTED_POSTGRESQL_VERSIONS,
-    is_reserved_keyword,
+    is_reserved_postgres_keyword,
     is_valid_postgres_column_name,
+)
+from is_valid_postgres_column_name.constants import (
+    SUPPORTED_POSTGRESQL_VERSIONS,
 )
 from is_valid_postgres_column_name.main import _get_keywords, pattern_matches
 
@@ -31,20 +33,21 @@ def test_is_valid_column_name(column_name, is_valid):
     assert is_valid_postgres_column_name(column_name) is is_valid
 
 
-@pytest.mark.parametrize("column_name, is_valid", [("asd", True)])
+@pytest.mark.parametrize(
+    "column_name, is_valid",
+    [("asd", True), ("$asd", False), ("*asd", False), ("1asd", False)],
+)
 def test_pattern_passes(column_name, is_valid):
     assert pattern_matches(column_name) is is_valid
+    assert is_valid_postgres_column_name(column_name) is is_valid
 
 
 @pytest.mark.parametrize(
     "column_name, is_reserved",
-    [
-        ("do", False),
-        ("DO", False),
-    ],
+    [("do", True), ("DO", True), ("kitty", False), ("TheBeatles", False)],
 )
 def test_is_reserved_keyword(column_name, is_reserved):
-    assert is_reserved_keyword(column_name) is is_reserved
+    assert is_reserved_postgres_keyword(column_name) is is_reserved
 
 
 @pytest.mark.parametrize("version", [1, 2, 3, 4, 5])
