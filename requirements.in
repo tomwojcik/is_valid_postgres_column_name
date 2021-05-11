@@ -1,0 +1,14 @@
+pandas
+lxml
+pytest
+pytest-cov
+pytest-sugar
+
+mypy
+black
+pre-commit
+pre-commit-hooks
+flake8
+
+bump2version
+pip-tools

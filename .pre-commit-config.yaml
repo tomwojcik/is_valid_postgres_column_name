@@ -1,0 +1,48 @@
+fail_fast: false
+
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: debug-statements
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+#  - repo: https://github.com/ambv/black
+#    rev: 20.8b1
+#    hooks:
+#      - id: black
+#        language_version: python3
+#        entry: black
+#        require_serial: true
+#        types: [ python ]
+#
+#  - repo: https://github.com/humitos/mirrors-autoflake
+#    rev: v1.1
+#    hooks:
+#      - id: autoflake
+#        args: ['--in-place', '--remove-all-unused-imports', '--remove-unused-variable']
+#        exclude: '__init__.py'
+
+#  - repo: https://github.com/pre-commit/mirrors-mypy
+#    rev: v0.790
+#    hooks:
+#      - id: mypy
+#        files: ^is_valid_postgres_column_name/
+#
+#  - repo: https://github.com/pycqa/flake8
+#    rev: 3.8.4
+#    hooks:
+#      - id: flake8
+#        exclude: ^is_valid_postgres_column_name/reserved_keywords/
+
+
+#  - repo: https://github.com/asottile/pyupgrade
+#    rev: v2.9.0
+#    hooks:
+#      - id: pyupgrade
+#
