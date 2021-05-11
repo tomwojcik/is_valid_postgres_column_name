@@ -34,11 +34,11 @@ repos:
       - id: mypy
         files: ^is_valid_postgres_column_name/
 
-#  - repo: https://github.com/pycqa/flake8
-#    rev: 3.8.4
-#    hooks:
-#      - id: flake8
-#        exclude: ^is_valid_postgres_column_name/reserved_keywords/
+  - repo: https://github.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+      - id: flake8
+        exclude: ^is_valid_postgres_column_name/reserved_keywords/
 
 
   - repo: https://github.com/asottile/pyupgrade
