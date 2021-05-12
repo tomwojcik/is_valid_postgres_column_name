@@ -44,3 +44,7 @@ None.
 # Contribution
 
 Welcome.
+
+# Alternatives
+
+If you don't want to download additional library for such a simple thing, have a look at `sqlparse` [`keywords.py`](https://github.com/andialbrecht/sqlparse/blob/23d29933ddc4272b495d36e0e32d3eaf0c3ef76d/sqlparse/keywords.py) file.
