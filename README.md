@@ -1,3 +1,8 @@
+[![Test Suite](https://github.com/tomwojcik/is_valid_postgres_column/actions/workflows/test-suite.yml/badge.svg)](https://github.com/tomwojcik/is_valid_postgres_column/actions/workflows/test-suite.yml)
+[![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-370/)
+[![PyPI version](https://badge.fury.io/py/is-valid-postgres-column-name.svg)](https://badge.fury.io/py/is-valid-postgres-column-name)
+
+
 I found it weird there's no simple way to check if a given string can be a PostgreSQL column name.
 Although, to my understanding, you can escape with quotation marks some names that are otherwise invalid,
 I don't think escaping such a thing is a good idea.
@@ -9,15 +14,17 @@ This validation is required if your column name can be dynamically generated.
 ```python
 >>> from is_valid_postgres_column_name import is_valid_postgres_column_name
 >>> is_valid_postgres_column_name("column_A")
->>> True
+True
 >>> is_valid_postgres_column_name("1column_A")
->>> False
+False
 ```
 
 All PostgreSQL versions are supported. The only difference between versions, to my knowledge, are reserved keywords.
 ```python
->>> is_valid_postgres_column_name("column_A", version=7.1)
->>> True
+>>> is_valid_postgres_column_name("window", version=13)
+False
+>>> is_valid_postgres_column_name("window", version=7.1)
+True
 ```
 
 # Installation
